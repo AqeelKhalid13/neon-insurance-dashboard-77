@@ -189,7 +189,7 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <Car className="card-glass">
+            <Card className="card-glass">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-cream mb-3">What types of insurance leads do you provide?</h3>
                 <p className="text-cream/70">We provide leads for auto, home, life, health, and commercial insurance across all 50 states.</p>
