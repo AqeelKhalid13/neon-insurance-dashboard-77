@@ -53,17 +53,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Custom insurance theme colors
-				electric: {
-					blue: '#00D4FF',
-					teal: '#00FFB3',
-					green: '#39FF14'
-				},
-				dark: {
-					bg: '#0A0A0F',
-					card: '#1A1A2E',
-					surface: '#16213E'
-				}
+				// Custom black and cream theme colors
+				black: '#000000',
+				cream: '#F5F5DC',
+				'light-cream': '#FFFDD0',
+				'dark-cream': '#E6D7B8',
+				'charcoal': '#1a1a1a',
+				'dark-gray': '#333333'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -109,10 +105,10 @@ export default {
 				},
 				'glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(0, 212, 255, 0.3)'
+						boxShadow: '0 0 20px rgba(245, 245, 220, 0.3)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(0, 212, 255, 0.6)'
+						boxShadow: '0 0 40px rgba(245, 245, 220, 0.6)'
 					}
 				},
 				'ticker': {

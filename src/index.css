@@ -8,33 +8,33 @@
 
 @layer base {
   :root {
-    --background: 218 23% 6%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 8%;
+    --foreground: 30 10% 95%;
 
-    --card: 218 23% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 12%;
+    --card-foreground: 30 10% 95%;
 
-    --popover: 218 23% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 30 10% 95%;
 
-    --primary: 195 100% 50%;
-    --primary-foreground: 218 23% 6%;
+    --primary: 30 15% 85%;
+    --primary-foreground: 0 0% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 30 10% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 30 5% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 30 10% 95%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 30 10% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 195 100% 50%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 30 15% 85%;
 
     --radius: 0.75rem;
   }
@@ -46,32 +46,32 @@
   }
 
   body {
-    @apply bg-dark-bg text-foreground font-inter;
-    background: linear-gradient(135deg, #0A0A0F 0%, #1A1A2E 100%);
+    @apply bg-black text-cream font-inter;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
     min-height: 100vh;
   }
 }
 
 @layer components {
   .glow-effect {
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 20px rgba(245, 245, 220, 0.3);
     transition: box-shadow 0.3s ease;
   }
   
   .glow-effect:hover {
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+    box-shadow: 0 0 40px rgba(245, 245, 220, 0.6);
   }
   
   .gradient-text {
-    background: linear-gradient(135deg, #00D4FF 0%, #00FFB3 100%);
+    background: linear-gradient(135deg, #F5F5DC 0%, #FFFDD0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   
   .card-glass {
-    background: rgba(26, 26, 46, 0.8);
+    background: rgba(20, 20, 20, 0.8);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 212, 255, 0.2);
+    border: 1px solid rgba(245, 245, 220, 0.2);
   }
 }

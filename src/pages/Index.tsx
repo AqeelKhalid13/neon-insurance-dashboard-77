@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Link } from 'react-router-dom';
 import HeroSection from '@/components/HeroSection';
 import LiveScoreboard from '@/components/LiveScoreboard';
 import AgentTestimonials from '@/components/AgentTestimonials';
@@ -12,18 +13,20 @@ import PricingSection from '@/components/PricingSection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-dark-bg text-foreground">
+    <div className="min-h-screen bg-black text-cream">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-dark-bg/90 backdrop-blur-md border-b border-gray-800">
+      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-cream/20">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold gradient-text">InsuranceElite</div>
             <div className="hidden md:flex space-x-8">
-              <a href="#features" className="hover:text-electric-blue transition-colors">Features</a>
-              <a href="#testimonials" className="hover:text-electric-blue transition-colors">Testimonials</a>
-              <a href="#pricing" className="hover:text-electric-blue transition-colors">Pricing</a>
+              <a href="#features" className="hover:text-light-cream transition-colors">Features</a>
+              <a href="#testimonials" className="hover:text-light-cream transition-colors">Testimonials</a>
+              <a href="#pricing" className="hover:text-light-cream transition-colors">Pricing</a>
+              <Link to="/about" className="hover:text-light-cream transition-colors">About Us</Link>
+              <Link to="/contact" className="hover:text-light-cream transition-colors">Contact Us</Link>
             </div>
-            <Button className="bg-electric-blue hover:bg-electric-blue/80 text-dark-bg font-semibold">
+            <Button className="bg-cream hover:bg-light-cream text-black font-semibold">
               Get Started
             </Button>
           </div>
@@ -34,7 +37,7 @@ const Index = () => {
       <HeroSection />
 
       {/* Live Scoreboard */}
-      <section className="py-16 bg-dark-surface/30">
+      <section className="py-16 bg-charcoal/30">
         <div className="container mx-auto px-6">
           <LiveScoreboard />
         </div>
@@ -45,7 +48,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 gradient-text">Real-Time Performance Analytics</h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl text-cream/70 max-w-3xl mx-auto">
               Track live market data, agent performance, and lead opportunities across all 50 states
             </p>
           </div>
@@ -58,7 +61,7 @@ const Index = () => {
       </section>
 
       {/* Agent Testimonials */}
-      <section id="testimonials" className="py-20 bg-dark-surface/30">
+      <section id="testimonials" className="py-20 bg-charcoal/30">
         <div className="container mx-auto px-6">
           <AgentTestimonials />
         </div>
@@ -72,14 +75,14 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-gray-800">
+      <footer className="py-12 border-t border-cream/20">
         <div className="container mx-auto px-6 text-center">
           <div className="text-2xl font-bold gradient-text mb-4">InsuranceElite</div>
-          <p className="text-gray-400 mb-6">Empowering insurance agents with premium leads and real-time insights</p>
+          <p className="text-cream/70 mb-6">Empowering insurance agents with premium leads and real-time insights</p>
           <div className="flex justify-center space-x-6">
-            <a href="#" className="text-gray-400 hover:text-electric-blue transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-electric-blue transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-400 hover:text-electric-blue transition-colors">Contact</a>
+            <a href="#" className="text-cream/70 hover:text-cream transition-colors">Privacy Policy</a>
+            <a href="#" className="text-cream/70 hover:text-cream transition-colors">Terms of Service</a>
+            <Link to="/contact" className="text-cream/70 hover:text-cream transition-colors">Contact</Link>
           </div>
         </div>
       </footer>
