@@ -9,6 +9,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AboutNeon from "./pages/AboutNeon";
 import ContactNeon from "./pages/ContactNeon";
+import Auth from "./pages/Auth";
+import OtpVerification from "./pages/OtpVerification";
+import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +28,9 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/about-neon" element={<AboutNeon />} />
           <Route path="/contact-neon" element={<ContactNeon />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/otp-verification" element={<OtpVerification />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
