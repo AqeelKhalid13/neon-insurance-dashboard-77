@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -164,9 +163,9 @@ const Auth = () => {
 
             {isLogin && (
               <div className="text-center">
-                <a href="#" className="text-cyan-300 hover:text-cyan-200 text-sm">
+                <Link to="/forgot-password" className="text-cyan-300 hover:text-cyan-200 text-sm">
                   Forgot your password?
-                </a>
+                </Link>
               </div>
             )}
 

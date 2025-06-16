@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +9,7 @@ import Contact from "./pages/Contact";
 import AboutNeon from "./pages/AboutNeon";
 import ContactNeon from "./pages/ContactNeon";
 import Auth from "./pages/Auth";
+import ForgotPassword from "./pages/ForgotPassword";
 import OtpVerification from "./pages/OtpVerification";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
@@ -29,6 +29,7 @@ const App = () => (
           <Route path="/about-neon" element={<AboutNeon />} />
           <Route path="/contact-neon" element={<ContactNeon />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/otp-verification" element={<OtpVerification />} />
           <Route path="/thank-you" element={<ThankYou />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
