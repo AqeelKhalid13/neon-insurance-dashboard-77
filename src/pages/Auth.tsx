@@ -1,14 +1,16 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, User, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff, Shield, UserCheck } from 'lucide-react';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const [loginType, setLoginType] = useState<'admin' | 'agent'>('agent');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -19,8 +21,12 @@ const Auth = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Navigate to OTP verification
-    navigate('/otp-verification', { state: { email: formData.email } });
+    // Navigate directly to dashboard with role
+    if (loginType === 'admin') {
+      navigate('/dashboard', { state: { role: 'admin' } });
+    } else {
+      navigate('/dashboard', { state: { role: 'agent' } });
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,6 +78,42 @@ const Auth = () => {
                 Sign Up
               </button>
             </div>
+
+            {isLogin && (
+              <div className="space-y-4">
+                <Label className="text-cyan-200">Login As</Label>
+                <div className="flex gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setLoginType('agent')}
+                    className={`flex-1 p-4 rounded-lg border transition-all ${
+                      loginType === 'agent'
+                        ? 'border-cyan-400 bg-cyan-500/20 text-cyan-100'
+                        : 'border-cyan-400/30 bg-black/30 text-cyan-100/70 hover:border-cyan-400/50'
+                    }`}
+                  >
+                    <div className="flex flex-col items-center space-y-2">
+                      <UserCheck className="h-6 w-6" />
+                      <span className="font-medium">Agent</span>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLoginType('admin')}
+                    className={`flex-1 p-4 rounded-lg border transition-all ${
+                      loginType === 'admin'
+                        ? 'border-purple-400 bg-purple-500/20 text-purple-100'
+                        : 'border-purple-400/30 bg-black/30 text-purple-100/70 hover:border-purple-400/50'
+                    }`}
+                  >
+                    <div className="flex flex-col items-center space-y-2">
+                      <Shield className="h-6 w-6" />
+                      <span className="font-medium">Admin</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {!isLogin && (
@@ -155,9 +197,13 @@ const Auth = () => {
 
               <Button 
                 type="submit"
-                className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold py-3 shadow-lg shadow-cyan-500/25"
+                className={`w-full font-semibold py-3 shadow-lg ${
+                  loginType === 'admin' && isLogin
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 shadow-purple-500/25'
+                    : 'bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 shadow-cyan-500/25'
+                } text-white`}
               >
-                {isLogin ? 'Login' : 'Create Account'}
+                {isLogin ? `Login as ${loginType === 'admin' ? 'Admin' : 'Agent'}` : 'Create Account'}
               </Button>
             </form>
 

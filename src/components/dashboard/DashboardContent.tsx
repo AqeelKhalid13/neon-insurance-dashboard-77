@@ -1,5 +1,5 @@
-
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -17,7 +17,8 @@ import AdminLeadManagement from './AdminLeadManagement';
 export function DashboardContent() {
   const [showSalesModal, setShowSalesModal] = useState(false);
   const [activeMenu, setActiveMenu] = useState("overview");
-  const [userRole] = useState<'admin' | 'agent'>('agent'); // This would come from auth context
+  const location = useLocation();
+  const userRole = location.state?.role || 'agent';
 
   const renderContent = () => {
     switch (activeMenu) {
