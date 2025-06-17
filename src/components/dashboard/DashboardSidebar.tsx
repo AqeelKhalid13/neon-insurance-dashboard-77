@@ -15,7 +15,7 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
-import { LayoutDashboard, LayoutPanelLeft } from 'lucide-react';
+import { LayoutDashboard, Users, BarChart3, CreditCard, Settings } from 'lucide-react';
 
 const menuItems = [
   {
@@ -24,18 +24,18 @@ const menuItems = [
     id: "overview"
   },
   {
-    title: "Lead Analytics", 
-    icon: LayoutPanelLeft,
+    title: "Lead Management", 
+    icon: Users,
     id: "leads"
   },
   {
     title: "Performance",
-    icon: LayoutDashboard,
+    icon: BarChart3,
     id: "performance"
   },
   {
     title: "Subscription",
-    icon: LayoutPanelLeft,
+    icon: CreditCard,
     id: "subscription"
   },
 ];
@@ -52,12 +52,12 @@ export function DashboardSidebar({ onMenuSelect, activeMenu = "overview" }: Dash
         <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
           InsuranceElite
         </div>
-        <p className="text-cyan-100/70 text-sm">Dashboard</p>
+        <p className="text-cyan-100/70 text-sm">Lead Management Dashboard</p>
       </SidebarHeader>
       
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-cyan-200">Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-cyan-200">Main Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
@@ -77,14 +77,14 @@ export function DashboardSidebar({ onMenuSelect, activeMenu = "overview" }: Dash
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-cyan-200">External</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-cyan-200">Quick Access</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild className="text-cyan-100 hover:bg-cyan-500/20 hover:text-cyan-50">
                   <Link to="/leads">
-                    <LayoutPanelLeft className="h-4 w-4" />
-                    <span>Lead Management</span>
+                    <Users className="h-4 w-4" />
+                    <span>Full Lead Queue</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -92,8 +92,22 @@ export function DashboardSidebar({ onMenuSelect, activeMenu = "overview" }: Dash
                 <SidebarMenuButton asChild className="text-cyan-100 hover:bg-cyan-500/20 hover:text-cyan-50">
                   <Link to="/">
                     <LayoutDashboard className="h-4 w-4" />
-                    <span>Home</span>
+                    <span>Main Site</span>
                   </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-cyan-200">Settings</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton className="text-cyan-100 hover:bg-cyan-500/20 hover:text-cyan-50">
+                  <Settings className="h-4 w-4" />
+                  <span>Preferences</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -104,7 +118,7 @@ export function DashboardSidebar({ onMenuSelect, activeMenu = "overview" }: Dash
       <SidebarFooter className="border-t border-cyan-400/30 p-4">
         <Link to="/auth" className="w-full">
           <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white">
-            Account
+            Account Settings
           </Button>
         </Link>
       </SidebarFooter>

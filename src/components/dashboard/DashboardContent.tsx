@@ -11,10 +11,13 @@ import SalesReportingModal from './SalesReportingModal';
 import LeadPerformanceTable from './LeadPerformanceTable';
 import GeographicHeatMap from './GeographicHeatMap';
 import RealtimeMetrics from './RealtimeMetrics';
+import LeadManagementTable from './LeadManagementTable';
+import AdminLeadManagement from './AdminLeadManagement';
 
 export function DashboardContent() {
   const [showSalesModal, setShowSalesModal] = useState(false);
   const [activeMenu, setActiveMenu] = useState("overview");
+  const [userRole] = useState<'admin' | 'agent'>('agent'); // This would come from auth context
 
   const renderContent = () => {
     switch (activeMenu) {
@@ -31,8 +34,12 @@ export function DashboardContent() {
       case "leads":
         return (
           <div className="space-y-8">
+            {userRole === 'admin' ? (
+              <AdminLeadManagement />
+            ) : (
+              <LeadManagementTable />
+            )}
             <LeadPerformanceTable />
-            <GeographicHeatMap />
           </div>
         );
       case "performance":
@@ -73,16 +80,24 @@ export function DashboardContent() {
                 Dashboard
               </h1>
               <p className="text-cyan-100/70 text-sm">
-                {activeMenu.charAt(0).toUpperCase() + activeMenu.slice(1)} Analytics
+                {activeMenu.charAt(0).toUpperCase() + activeMenu.slice(1)} 
+                {userRole === 'admin' ? ' - Admin Panel' : ' - Agent Panel'}
               </p>
             </div>
           </div>
-          <Button 
-            onClick={() => setShowSalesModal(true)}
-            className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-semibold shadow-lg shadow-green-500/25"
-          >
-            Mark Sale
-          </Button>
+          <div className="flex items-center space-x-4">
+            <Button 
+              onClick={() => setShowSalesModal(true)}
+              className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-semibold shadow-lg shadow-green-500/25"
+            >
+              Mark Sale
+            </Button>
+            {userRole === 'admin' && (
+              <div className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded border border-purple-400/50">
+                ADMIN
+              </div>
+            )}
+          </div>
         </div>
       </header>
 
@@ -99,7 +114,7 @@ export function DashboardContent() {
                 Overview
               </TabsTrigger>
               <TabsTrigger value="leads" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-100">
-                Lead Analytics
+                {userRole === 'admin' ? 'Lead Management' : 'My Leads'}
               </TabsTrigger>
               <TabsTrigger value="performance" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-100">
                 Performance
@@ -121,8 +136,12 @@ export function DashboardContent() {
 
             <TabsContent value="leads" className="mt-8">
               <div className="space-y-8">
+                {userRole === 'admin' ? (
+                  <AdminLeadManagement />
+                ) : (
+                  <LeadManagementTable />
+                )}
                 <LeadPerformanceTable />
-                <GeographicHeatMap />
               </div>
             </TabsContent>
 
