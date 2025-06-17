@@ -4,6 +4,7 @@ import { SidebarProvider } from '@/components/ui/sidebar';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
 import { DashboardContent } from '@/components/dashboard/DashboardContent';
 import { AdminDashboard } from '@/components/admin/AdminDashboard';
+import { AgentDashboard } from '@/components/agent/AgentDashboard';
 
 const Dashboard = () => {
   const location = useLocation();
@@ -16,10 +17,7 @@ const Dashboard = () => {
           {userRole === 'admin' ? (
             <AdminDashboard />
           ) : (
-            <>
-              <DashboardSidebar />
-              <DashboardContent />
-            </>
+            <AgentDashboard />
           )}
         </div>
       </SidebarProvider>
