@@ -20,15 +20,18 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">InsuranceElite</div>
             <div className="hidden md:flex space-x-8">
+              <Link to="/dashboard" className="text-cyan-300 hover:text-cyan-100 transition-colors">Dashboard</Link>
               <a href="#features" className="text-cyan-300 hover:text-cyan-100 transition-colors">Features</a>
               <a href="#testimonials" className="text-cyan-300 hover:text-cyan-100 transition-colors">Testimonials</a>
               <a href="#pricing" className="text-cyan-300 hover:text-cyan-100 transition-colors">Pricing</a>
               <Link to="/about-neon" className="text-cyan-300 hover:text-cyan-100 transition-colors">About Us</Link>
               <Link to="/contact-neon" className="text-cyan-300 hover:text-cyan-100 transition-colors">Contact Us</Link>
             </div>
-            <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold shadow-lg shadow-cyan-500/25">
-              Get Started
-            </Button>
+            <Link to="/auth">
+              <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold shadow-lg shadow-cyan-500/25">
+                Get Started
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -43,9 +46,11 @@ const Index = () => {
             Empowering insurance agents with premium leads and real-time insights. Join thousands of successful agents maximizing their potential.
           </p>
           <div className="flex justify-center space-x-4">
-            <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold px-8 py-3 text-lg shadow-lg shadow-cyan-500/25">
-              Start Free Trial
-            </Button>
+            <Link to="/dashboard">
+              <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-semibold px-8 py-3 text-lg shadow-lg shadow-cyan-500/25">
+                View Dashboard
+              </Button>
+            </Link>
             <Button variant="outline" className="border-cyan-400/50 text-cyan-200 hover:bg-cyan-400/10 px-8 py-3 text-lg">
               Watch Demo
             </Button>
