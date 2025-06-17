@@ -15,6 +15,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import OtpVerification from "./pages/OtpVerification";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
+import Leads from "./pages/Leads";
 
 const queryClient = new QueryClient();
 
