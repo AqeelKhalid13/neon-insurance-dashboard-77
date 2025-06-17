@@ -48,58 +48,58 @@ export function MarkAsSoldModal({ isOpen, onClose, onSubmit, leadId }: MarkAsSol
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-black/90 border border-cyan-400/30 text-white max-w-md">
+      <DialogContent className="bg-elevated-bg border border-input-border text-primary-text max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+          <DialogTitle className="text-xl font-bold text-cream-primary">
             Mark as Sold
           </DialogTitle>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="zipCode" className="text-cyan-100">Client ZIP Code *</Label>
+            <Label htmlFor="zipCode" className="text-primary-text">Client ZIP Code *</Label>
             <Input
               id="zipCode"
               value={formData.zipCode}
               onChange={(e) => handleInputChange('zipCode', e.target.value)}
-              className="bg-gray-800/50 border-cyan-400/30 text-white"
+              className="bg-section-bg border-input-border text-primary-text focus:border-cream-primary"
               placeholder="12345"
               required
             />
           </div>
 
           <div>
-            <Label htmlFor="annualSubmitAmount" className="text-cyan-100">Annual Submit Amount *</Label>
+            <Label htmlFor="annualSubmitAmount" className="text-primary-text">Annual Submit Amount *</Label>
             <Input
               id="annualSubmitAmount"
               type="number"
               value={formData.annualSubmitAmount}
               onChange={(e) => handleInputChange('annualSubmitAmount', e.target.value)}
-              className="bg-gray-800/50 border-cyan-400/30 text-white"
+              className="bg-section-bg border-input-border text-primary-text focus:border-cream-primary"
               placeholder="25000"
               required
             />
           </div>
 
           <div>
-            <Label htmlFor="insuranceCompany" className="text-cyan-100">Insurance Company *</Label>
+            <Label htmlFor="insuranceCompany" className="text-primary-text">Insurance Company *</Label>
             <Input
               id="insuranceCompany"
               value={formData.insuranceCompany}
               onChange={(e) => handleInputChange('insuranceCompany', e.target.value)}
-              className="bg-gray-800/50 border-cyan-400/30 text-white"
+              className="bg-section-bg border-input-border text-primary-text focus:border-cream-primary"
               placeholder="ABC Insurance Co."
               required
             />
           </div>
 
           <div>
-            <Label htmlFor="product" className="text-cyan-100">Product *</Label>
+            <Label htmlFor="product" className="text-primary-text">Product *</Label>
             <select
               id="product"
               value={formData.product}
               onChange={(e) => handleInputChange('product', e.target.value)}
-              className="w-full bg-gray-800/50 border border-cyan-400/30 text-white rounded-md px-3 py-2"
+              className="w-full bg-section-bg border border-input-border text-primary-text rounded-md px-3 py-2 focus:border-cream-primary focus:outline-none"
               required
             >
               <option value="">Select Product</option>
@@ -112,22 +112,22 @@ export function MarkAsSoldModal({ isOpen, onClose, onSubmit, leadId }: MarkAsSol
           </div>
 
           <div>
-            <Label htmlFor="notes" className="text-cyan-100">Notes</Label>
+            <Label htmlFor="notes" className="text-primary-text">Notes</Label>
             <Textarea
               id="notes"
               value={formData.notes}
               onChange={(e) => handleInputChange('notes', e.target.value)}
-              className="bg-gray-800/50 border-cyan-400/30 text-white resize-none"
+              className="bg-section-bg border-input-border text-primary-text resize-none focus:border-cream-primary"
               placeholder="Additional notes about this sale..."
               rows={3}
             />
           </div>
 
           <div className="flex space-x-3 pt-4">
-            <Button type="button" variant="outline" onClick={onClose} className="flex-1 border-gray-600 text-gray-300">
+            <Button type="button" variant="outline" onClick={onClose} className="flex-1 border-input-border text-secondary-text hover:bg-section-bg">
               Cancel
             </Button>
-            <Button type="submit" className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400">
+            <Button type="submit" className="flex-1 bg-theme-success hover:bg-theme-success-hover text-white">
               Mark as Sold
             </Button>
           </div>

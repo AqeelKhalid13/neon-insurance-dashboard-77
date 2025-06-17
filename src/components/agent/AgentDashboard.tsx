@@ -13,21 +13,21 @@ export function AgentDashboard() {
   return (
     <div className="flex-1 flex flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-black/30 backdrop-blur-md border-b border-cyan-400/30">
+      <header className="sticky top-0 z-40 bg-elevated-bg/90 backdrop-blur-md border-b border-input-border">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center space-x-4">
-            <SidebarTrigger className="text-cyan-300 hover:text-cyan-100" />
+            <SidebarTrigger className="text-cream-primary hover:text-primary-text" />
             <div>
-              <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+              <h1 className="text-2xl font-bold text-cream-primary">
                 Agent Dashboard
               </h1>
-              <p className="text-cyan-100/70 text-sm">
+              <p className="text-secondary-text text-sm">
                 Manage your leads and track performance
               </p>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="text-xs bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded border border-cyan-400/50">
+            <div className="text-xs bg-cream-primary/20 text-cream-primary px-3 py-1 rounded border border-cream-primary/50">
               AGENT ACCESS
             </div>
           </div>
@@ -35,19 +35,19 @@ export function AgentDashboard() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-6 bg-dark-base">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-4 bg-black/40 backdrop-blur-md border border-cyan-400/30">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-100">
+          <TabsList className="grid w-full grid-cols-4 bg-elevated-bg backdrop-blur-md border border-input-border">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-cream-primary/20 data-[state=active]:text-cream-primary">
               Dashboard
             </TabsTrigger>
-            <TabsTrigger value="leads" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-100">
+            <TabsTrigger value="leads" className="data-[state=active]:bg-cream-primary/20 data-[state=active]:text-cream-primary">
               My Leads
             </TabsTrigger>
-            <TabsTrigger value="analytics" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-100">
+            <TabsTrigger value="analytics" className="data-[state=active]:bg-cream-primary/20 data-[state=active]:text-cream-primary">
               Performance
             </TabsTrigger>
-            <TabsTrigger value="billing" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-100">
+            <TabsTrigger value="billing" className="data-[state=active]:bg-cream-primary/20 data-[state=active]:text-cream-primary">
               Subscription
             </TabsTrigger>
           </TabsList>

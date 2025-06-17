@@ -53,13 +53,27 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Custom black and cream theme colors
-				black: '#000000',
-				cream: '#F5F5DC',
-				'light-cream': '#FFFDD0',
-				'dark-cream': '#E6D7B8',
-				'charcoal': '#1a1a1a',
-				'dark-gray': '#333333'
+				// Custom dark theme colors
+				'cream-primary': '#E2DCD5',
+				'cream-hover': '#D6D0C8',
+				'dark-base': '#121212',
+				'elevated-bg': '#1E1E1E',
+				'section-bg': '#252525',
+				'primary-text': '#F5F5F5',
+				'secondary-text': '#B0B0B0',
+				'disabled-text': '#707070',
+				'input-border': '#3A3A3A',
+				'theme-success': '#4CAF50',
+				'theme-success-hover': '#43A047',
+				'theme-danger': '#D9534F',
+				'theme-danger-hover': '#C3423C',
+				// Legacy colors for compatibility
+				black: '#121212',
+				cream: '#E2DCD5',
+				'light-cream': '#D6D0C8',
+				'dark-cream': '#B8B2AA',
+				'charcoal': '#1E1E1E',
+				'dark-gray': '#252525'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -105,10 +119,10 @@ export default {
 				},
 				'glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(245, 245, 220, 0.3)'
+						boxShadow: '0 0 20px rgba(226, 220, 213, 0.3)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(245, 245, 220, 0.6)'
+						boxShadow: '0 0 40px rgba(226, 220, 213, 0.6)'
 					}
 				},
 				'ticker': {
