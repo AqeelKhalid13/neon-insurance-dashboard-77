@@ -111,16 +111,16 @@ export function UserManagement() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">
+        <h2 className="text-3xl font-bold text-cream-primary mb-2">
           User Management
         </h2>
-        <p className="text-purple-100/70">Manage agent accounts and monitor performance</p>
+        <p className="text-secondary-text">Manage agent accounts and monitor performance</p>
       </div>
 
-      <Card className="bg-black/40 backdrop-blur-md border border-purple-400/30 shadow-xl shadow-purple-500/10">
+      <Card className="bg-elevated-bg border-input-border shadow-xl">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+            <CardTitle className="text-xl font-bold text-cream-primary">
               Active Agents ({filteredAgents.length})
             </CardTitle>
             <div className="flex gap-4">
@@ -129,13 +129,13 @@ export function UserManagement() {
                   placeholder="Search agents..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-gray-800/50 border-purple-400/30 text-white placeholder-gray-400"
+                  className="bg-section-bg border-input-border text-primary-text placeholder-secondary-text"
                 />
               </div>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-gray-800/50 border border-purple-400/30 text-white rounded-md px-3 py-2"
+                className="bg-section-bg border border-input-border text-primary-text rounded-md px-3 py-2"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
@@ -146,30 +146,30 @@ export function UserManagement() {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="rounded-lg border border-gray-700/50 overflow-hidden">
+          <div className="rounded-lg border border-input-border overflow-hidden">
             <Table>
               <TableHeader>
-                <TableRow className="bg-gray-800/30 border-gray-700/50">
-                  <TableHead className="text-purple-200">Agent Information</TableHead>
-                  <TableHead className="text-purple-200">Plan</TableHead>
-                  <TableHead className="text-purple-200">Lead Assignment</TableHead>
-                  <TableHead className="text-purple-200">Status</TableHead>
-                  <TableHead className="text-purple-200">Performance</TableHead>
-                  <TableHead className="text-purple-200">Last Active</TableHead>
-                  <TableHead className="text-purple-200">Actions</TableHead>
+                <TableRow className="bg-section-bg border-input-border">
+                  <TableHead className="text-cream-primary">Agent Information</TableHead>
+                  <TableHead className="text-cream-primary">Plan</TableHead>
+                  <TableHead className="text-cream-primary">Lead Assignment</TableHead>
+                  <TableHead className="text-cream-primary">Status</TableHead>
+                  <TableHead className="text-cream-primary">Performance</TableHead>
+                  <TableHead className="text-cream-primary">Last Active</TableHead>
+                  <TableHead className="text-cream-primary">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {filteredAgents.map((agent) => (
-                  <TableRow key={agent.id} className="border-gray-700/50 hover:bg-gray-800/20">
+                  <TableRow key={agent.id} className="border-input-border hover:bg-section-bg/50">
                     <TableCell>
                       <div className="space-y-1">
-                        <div className="font-medium text-white">{agent.name}</div>
-                        <div className="flex items-center space-x-2 text-sm text-gray-400">
+                        <div className="font-medium text-primary-text">{agent.name}</div>
+                        <div className="flex items-center space-x-2 text-sm text-secondary-text">
                           <Mail className="h-3 w-3" />
                           <span>{agent.email}</span>
                         </div>
-                        <div className="flex items-center space-x-2 text-sm text-gray-400">
+                        <div className="flex items-center space-x-2 text-sm text-secondary-text">
                           <Phone className="h-3 w-3" />
                           <span>{agent.phone}</span>
                         </div>
@@ -182,14 +182,14 @@ export function UserManagement() {
                     </TableCell>
                     <TableCell>
                       <div className="space-y-1">
-                        <div className="text-white font-medium">
+                        <div className="text-primary-text font-medium">
                           {agent.assignedLeads}/{agent.maxLeads} leads
                         </div>
-                        <div className="w-full bg-gray-700 rounded-full h-2">
+                        <div className="w-full bg-section-bg rounded-full h-2">
                           <div 
                             className={`h-2 rounded-full ${
-                              (agent.assignedLeads / agent.maxLeads) > 0.8 ? 'bg-red-500' :
-                              (agent.assignedLeads / agent.maxLeads) > 0.6 ? 'bg-yellow-500' : 'bg-green-500'
+                              (agent.assignedLeads / agent.maxLeads) > 0.8 ? 'bg-theme-danger' :
+                              (agent.assignedLeads / agent.maxLeads) > 0.6 ? 'bg-yellow-500' : 'bg-theme-success'
                             }`}
                             style={{ width: `${(agent.assignedLeads / agent.maxLeads) * 100}%` }}
                           />
@@ -202,12 +202,12 @@ export function UserManagement() {
                       </Badge>
                     </TableCell>
                     <TableCell>
-                      <div className="text-white font-medium">{agent.totalSales} sales</div>
-                      <div className="text-gray-400 text-sm">
+                      <div className="text-primary-text font-medium">{agent.totalSales} sales</div>
+                      <div className="text-secondary-text text-sm">
                         Joined {new Date(agent.joinDate).toLocaleDateString()}
                       </div>
                     </TableCell>
-                    <TableCell className="text-gray-300">
+                    <TableCell className="text-secondary-text">
                       {new Date(agent.lastActive).toLocaleDateString()}
                     </TableCell>
                     <TableCell>
@@ -215,7 +215,7 @@ export function UserManagement() {
                         <Button 
                           size="sm" 
                           variant="outline"
-                          className="border-purple-400/50 text-purple-300 hover:bg-purple-500/20"
+                          className="border-input-border text-secondary-text hover:bg-cream-primary/20 hover:text-cream-primary"
                         >
                           <Eye className="h-3 w-3 mr-1" />
                           View
@@ -225,7 +225,7 @@ export function UserManagement() {
                             size="sm" 
                             variant="outline"
                             onClick={() => handleStatusChange(agent.id, 'suspended')}
-                            className="border-red-400/50 text-red-300 hover:bg-red-500/20"
+                            className="border-theme-danger/50 text-theme-danger hover:bg-theme-danger/20"
                           >
                             <UserX className="h-3 w-3 mr-1" />
                             Suspend
@@ -235,7 +235,7 @@ export function UserManagement() {
                             size="sm" 
                             variant="outline"
                             onClick={() => handleStatusChange(agent.id, 'active')}
-                            className="border-green-400/50 text-green-300 hover:bg-green-500/20"
+                            className="border-theme-success/50 text-theme-success hover:bg-theme-success/20"
                           >
                             <UserCheck className="h-3 w-3 mr-1" />
                             Activate

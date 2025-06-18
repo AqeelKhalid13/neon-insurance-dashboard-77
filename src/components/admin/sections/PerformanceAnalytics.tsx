@@ -52,73 +52,73 @@ export function PerformanceAnalytics() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+          <h2 className="text-3xl font-bold text-cream-primary">
             Performance Analytics
           </h2>
-          <p className="text-purple-100/70">System-wide performance metrics and insights</p>
+          <p className="text-secondary-text">System-wide performance metrics and insights</p>
         </div>
       </div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-black/40 border-purple-400/30">
+        <Card className="bg-elevated-bg border-input-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-purple-100 flex items-center">
+            <CardTitle className="text-sm font-medium text-secondary-text flex items-center">
               <Target className="w-4 h-4 mr-2" />
               Total Leads Distributed
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-purple-400">{totalLeads}</div>
-            <div className="flex items-center text-sm text-green-400">
+            <div className="text-2xl font-bold text-cream-primary">{totalLeads}</div>
+            <div className="flex items-center text-sm text-theme-success">
               <TrendingUp className="w-3 h-3 mr-1" />
               +12% from last month
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-black/40 border-purple-400/30">
+        <Card className="bg-elevated-bg border-input-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-purple-100 flex items-center">
+            <CardTitle className="text-sm font-medium text-secondary-text flex items-center">
               <DollarSign className="w-4 h-4 mr-2" />
               Total Leads Sold
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-400">{totalSold}</div>
-            <div className="flex items-center text-sm text-green-400">
+            <div className="text-2xl font-bold text-theme-success">{totalSold}</div>
+            <div className="flex items-center text-sm text-theme-success">
               <TrendingUp className="w-3 h-3 mr-1" />
               +8% from last month
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-black/40 border-purple-400/30">
+        <Card className="bg-elevated-bg border-input-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-purple-100 flex items-center">
+            <CardTitle className="text-sm font-medium text-secondary-text flex items-center">
               <Target className="w-4 h-4 mr-2" />
               Overall Conversion Rate
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-blue-400">{overallConversion}%</div>
-            <div className="flex items-center text-sm text-red-400">
+            <div className="flex items-center text-sm text-theme-danger">
               <TrendingDown className="w-3 h-3 mr-1" />
               -2% from last month
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-black/40 border-purple-400/30">
+        <Card className="bg-elevated-bg border-input-border">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-purple-100 flex items-center">
+            <CardTitle className="text-sm font-medium text-secondary-text flex items-center">
               <Users className="w-4 h-4 mr-2" />
               Active Agents
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-purple-400">24</div>
-            <div className="text-sm text-purple-100/70">2 inactive</div>
+            <div className="text-2xl font-bold text-cream-primary">24</div>
+            <div className="text-sm text-secondary-text">2 inactive</div>
           </CardContent>
         </Card>
       </div>
@@ -126,38 +126,39 @@ export function PerformanceAnalytics() {
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Leads by State */}
-        <Card className="bg-black/40 border-purple-400/30">
+        <Card className="bg-elevated-bg border-input-border">
           <CardHeader>
-            <CardTitle className="text-purple-100">Leads by State</CardTitle>
-            <CardDescription className="text-purple-100/70">
+            <CardTitle className="text-cream-primary">Leads by State</CardTitle>
+            <CardDescription className="text-secondary-text">
               Distribution and conversion by state
             </CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={leadsByState}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#7C3AED" opacity={0.3} />
-                <XAxis dataKey="state" stroke="#A855F7" />
-                <YAxis stroke="#A855F7" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#E2DCD5" opacity={0.3} />
+                <XAxis dataKey="state" stroke="#E2DCD5" />
+                <YAxis stroke="#E2DCD5" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'rgba(0,0,0,0.8)', 
-                    border: '1px solid #A855F7', 
-                    borderRadius: '8px' 
+                    backgroundColor: '#1E1E1E', 
+                    border: '1px solid #E2DCD5', 
+                    borderRadius: '8px',
+                    color: '#F5F5F5'
                   }} 
                 />
-                <Bar dataKey="leads" fill="#A855F7" name="Total Leads" />
-                <Bar dataKey="sold" fill="#10B981" name="Sold" />
+                <Bar dataKey="leads" fill="#E2DCD5" name="Total Leads" />
+                <Bar dataKey="sold" fill="#4CAF50" name="Sold" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
 
         {/* Lead Status Distribution */}
-        <Card className="bg-black/40 border-purple-400/30">
+        <Card className="bg-elevated-bg border-input-border">
           <CardHeader>
-            <CardTitle className="text-purple-100">Lead Status Distribution</CardTitle>
-            <CardDescription className="text-purple-100/70">
+            <CardTitle className="text-cream-primary">Lead Status Distribution</CardTitle>
+            <CardDescription className="text-secondary-text">
               Current status of all leads
             </CardDescription>
           </CardHeader>
@@ -178,35 +179,43 @@ export function PerformanceAnalytics() {
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: '#1E1E1E', 
+                    border: '1px solid #E2DCD5', 
+                    borderRadius: '8px',
+                    color: '#F5F5F5'
+                  }} 
+                />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
 
         {/* Monthly Trends */}
-        <Card className="bg-black/40 border-purple-400/30 lg:col-span-2">
+        <Card className="bg-elevated-bg border-input-border lg:col-span-2">
           <CardHeader>
-            <CardTitle className="text-purple-100">Monthly Performance Trends</CardTitle>
-            <CardDescription className="text-purple-100/70">
+            <CardTitle className="text-cream-primary">Monthly Performance Trends</CardTitle>
+            <CardDescription className="text-secondary-text">
               Lead distribution and sales over time
             </CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={monthlyTrends}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#7C3AED" opacity={0.3} />
-                <XAxis dataKey="month" stroke="#A855F7" />
-                <YAxis stroke="#A855F7" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#E2DCD5" opacity={0.3} />
+                <XAxis dataKey="month" stroke="#E2DCD5" />
+                <YAxis stroke="#E2DCD5" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'rgba(0,0,0,0.8)', 
-                    border: '1px solid #A855F7', 
-                    borderRadius: '8px' 
+                    backgroundColor: '#1E1E1E', 
+                    border: '1px solid #E2DCD5', 
+                    borderRadius: '8px',
+                    color: '#F5F5F5'
                   }} 
                 />
-                <Line type="monotone" dataKey="leadsDistributed" stroke="#A855F7" strokeWidth={2} name="Leads Distributed" />
-                <Line type="monotone" dataKey="leadsSold" stroke="#10B981" strokeWidth={2} name="Leads Sold" />
+                <Line type="monotone" dataKey="leadsDistributed" stroke="#E2DCD5" strokeWidth={2} name="Leads Distributed" />
+                <Line type="monotone" dataKey="leadsSold" stroke="#4CAF50" strokeWidth={2} name="Leads Sold" />
               </LineChart>
             </ResponsiveContainer>
           </CardContent>
@@ -215,9 +224,9 @@ export function PerformanceAnalytics() {
 
       {/* Performance Insights */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="bg-black/40 border-purple-400/30">
+        <Card className="bg-elevated-bg border-input-border">
           <CardHeader>
-            <CardTitle className="text-purple-100 flex items-center">
+            <CardTitle className="text-cream-primary flex items-center">
               <MapPin className="w-5 h-5 mr-2" />
               Best Performing State
             </CardTitle>
@@ -225,19 +234,19 @@ export function PerformanceAnalytics() {
           <CardContent>
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-green-400">{bestPerformingState.state}</div>
-                <div className="text-sm text-purple-100/70">Conversion Rate</div>
+                <div className="text-2xl font-bold text-theme-success">{bestPerformingState.state}</div>
+                <div className="text-sm text-secondary-text">Conversion Rate</div>
               </div>
-              <Badge className="bg-green-500/20 text-green-400 border-green-400/50 text-lg px-3 py-1">
+              <Badge className="bg-theme-success/20 text-theme-success border-theme-success/50 text-lg px-3 py-1">
                 {bestPerformingState.conversion}%
               </Badge>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-black/40 border-purple-400/30">
+        <Card className="bg-elevated-bg border-input-border">
           <CardHeader>
-            <CardTitle className="text-purple-100 flex items-center">
+            <CardTitle className="text-cream-primary flex items-center">
               <MapPin className="w-5 h-5 mr-2" />
               Needs Improvement
             </CardTitle>
@@ -245,10 +254,10 @@ export function PerformanceAnalytics() {
           <CardContent>
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-red-400">{worstPerformingState.state}</div>
-                <div className="text-sm text-purple-100/70">Conversion Rate</div>
+                <div className="text-2xl font-bold text-theme-danger">{worstPerformingState.state}</div>
+                <div className="text-sm text-secondary-text">Conversion Rate</div>
               </div>
-              <Badge className="bg-red-500/20 text-red-400 border-red-400/50 text-lg px-3 py-1">
+              <Badge className="bg-theme-danger/20 text-theme-danger border-theme-danger/50 text-lg px-3 py-1">
                 {worstPerformingState.conversion}%
               </Badge>
             </div>
