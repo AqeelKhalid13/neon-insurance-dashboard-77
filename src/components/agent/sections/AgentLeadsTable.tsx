@@ -5,8 +5,11 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Phone, Mail, MapPin, CheckCircle, RotateCcw } from 'lucide-react';
 import { MarkAsSoldModal } from '../modals/MarkAsSoldModal';
+import { LeadCategoriesSection } from './LeadCategoriesSection';
+import { AgedLeadsFilter } from './AgedLeadsFilter';
 import { useToast } from '@/hooks/use-toast';
 
 interface Lead {
@@ -122,136 +125,169 @@ export function AgentLeadsTable() {
 
   return (
     <>
-      <Card className="bg-black/40 backdrop-blur-md border border-cyan-400/30 shadow-xl shadow-cyan-500/10">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                My Leads
-              </CardTitle>
-              <p className="text-cyan-100/70">Manage your assigned leads</p>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-64">
-                <Input
-                  placeholder="Search leads..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-gray-800/50 border-cyan-400/30 text-white placeholder-gray-400"
-                />
+      <Tabs defaultValue="my-leads" className="w-full">
+        <TabsList className="grid w-full grid-cols-3 bg-elevated border-[#3A3A3A]">
+          <TabsTrigger 
+            value="my-leads" 
+            className="data-[state=active]:bg-primary data-[state=active]:text-dark-base text-secondary-text"
+          >
+            My Leads
+          </TabsTrigger>
+          <TabsTrigger 
+            value="lead-categories" 
+            className="data-[state=active]:bg-primary data-[state=active]:text-dark-base text-secondary-text"
+          >
+            Lead Categories
+          </TabsTrigger>
+          <TabsTrigger 
+            value="aged-leads" 
+            className="data-[state=active]:bg-primary data-[state=active]:text-dark-base text-secondary-text"
+          >
+            Aged Leads
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="my-leads" className="mt-6">
+          <Card className="bg-elevated border-[#3A3A3A]">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-2xl font-bold text-primary">
+                    My Leads
+                  </CardTitle>
+                  <p className="text-secondary-text">Manage your assigned leads</p>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-64">
+                    <Input
+                      placeholder="Search leads..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="bg-section-bg border-[#3A3A3A] text-primary-text placeholder-disabled-text focus:border-primary"
+                    />
+                  </div>
+                  <select
+                    value={selectedStatus}
+                    onChange={(e) => setSelectedStatus(e.target.value)}
+                    className="bg-section-bg border border-[#3A3A3A] text-primary-text rounded-md px-3 py-2 focus:border-primary"
+                  >
+                    <option value="all">All Status</option>
+                    <option value="New">New</option>
+                    <option value="Sold">Sold</option>
+                    <option value="Replacement Requested">Replacement Requested</option>
+                    <option value="Replaced">Replaced</option>
+                  </select>
+                </div>
               </div>
-              <select
-                value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="bg-gray-800/50 border border-cyan-400/30 text-white rounded-md px-3 py-2"
-              >
-                <option value="all">All Status</option>
-                <option value="New">New</option>
-                <option value="Sold">Sold</option>
-                <option value="Replacement Requested">Replacement Requested</option>
-                <option value="Replaced">Replaced</option>
-              </select>
-            </div>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="rounded-lg border border-gray-700/50 overflow-hidden">
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-gray-800/30 border-gray-700/50">
-                  <TableHead className="text-cyan-200">Client Name</TableHead>
-                  <TableHead className="text-cyan-200">Contact Info</TableHead>
-                  <TableHead className="text-cyan-200">State</TableHead>
-                  <TableHead className="text-cyan-200">Lead Type</TableHead>
-                  <TableHead className="text-cyan-200">Status</TableHead>
-                  <TableHead className="text-cyan-200">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredLeads.map((lead) => (
-                  <TableRow key={lead.id} className="border-gray-700/50 hover:bg-gray-800/20">
-                    <TableCell>
-                      <div className="font-medium text-white">{lead.clientName}</div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="space-y-1">
-                        <div className="flex items-center space-x-2 text-sm text-gray-400">
-                          <Mail className="h-3 w-3" />
-                          <span>{lead.email}</span>
-                        </div>
-                        <div className="flex items-center space-x-2 text-sm text-gray-400">
-                          <Phone className="h-3 w-3" />
-                          <span>{lead.phone}</span>
-                        </div>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center space-x-2 text-sm">
-                        <MapPin className="h-3 w-3 text-gray-400" />
-                        <span className="text-white">{lead.state}</span>
-                        <span className="text-gray-400">{lead.zipCode}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge className={getLeadTypeColor(lead.leadType)}>
-                        {lead.leadType}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <div className="space-y-1">
-                        <Badge className={getStatusColor(lead.status)}>
-                          {lead.status}
-                        </Badge>
-                        {lead.replacementStatus && (
-                          <div className="text-xs text-gray-400">
-                            Status: {lead.replacementStatus}
+            </CardHeader>
+            <CardContent>
+              <div className="rounded-lg border border-[#3A3A3A] overflow-hidden">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-section-bg border-[#3A3A3A]">
+                      <TableHead className="text-primary">Client Name</TableHead>
+                      <TableHead className="text-primary">Contact Info</TableHead>
+                      <TableHead className="text-primary">State</TableHead>
+                      <TableHead className="text-primary">Lead Type</TableHead>
+                      <TableHead className="text-primary">Status</TableHead>
+                      <TableHead className="text-primary">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredLeads.map((lead) => (
+                      <TableRow key={lead.id} className="border-[#3A3A3A] hover:bg-section-bg/50">
+                        <TableCell>
+                          <div className="font-medium text-primary-text">{lead.clientName}</div>
+                        </TableCell>
+                        <TableCell>
+                          <div className="space-y-1">
+                            <div className="flex items-center space-x-2 text-sm text-secondary-text">
+                              <Mail className="h-3 w-3" />
+                              <span>{lead.email}</span>
+                            </div>
+                            <div className="flex items-center space-x-2 text-sm text-secondary-text">
+                              <Phone className="h-3 w-3" />
+                              <span>{lead.phone}</span>
+                            </div>
                           </div>
-                        )}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex space-x-2">
-                        {lead.status !== 'Sold' && lead.status !== 'Replacement Requested' && (
-                          <>
-                            <Button 
-                              size="sm" 
-                              onClick={() => handleMarkAsSold(lead.id)}
-                              className="bg-green-600/20 border border-green-500/50 text-green-300 hover:bg-green-500/30"
-                            >
-                              <CheckCircle className="h-3 w-3 mr-1" />
-                              Mark Sold
-                            </Button>
-                            <Button 
-                              size="sm" 
-                              variant="outline"
-                              onClick={() => handleRequestReplacement(lead.id)}
-                              className="border-orange-400/50 text-orange-300 hover:bg-orange-500/20"
-                            >
-                              <RotateCcw className="h-3 w-3 mr-1" />
-                              Request Replacement
-                            </Button>
-                          </>
-                        )}
-                        {lead.status === 'Replacement Requested' && (
-                          <Badge className="bg-orange-500/20 text-orange-300">
-                            {lead.replacementStatus}
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex items-center space-x-2 text-sm">
+                            <MapPin className="h-3 w-3 text-secondary-text" />
+                            <span className="text-primary-text">{lead.state}</span>
+                            <span className="text-secondary-text">{lead.zipCode}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge className={getLeadTypeColor(lead.leadType)}>
+                            {lead.leadType}
                           </Badge>
-                        )}
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-          
-          {filteredLeads.length === 0 && (
-            <div className="text-center py-8 text-gray-400">
-              No leads found matching your criteria.
-            </div>
-          )}
-        </CardContent>
-      </Card>
+                        </TableCell>
+                        <TableCell>
+                          <div className="space-y-1">
+                            <Badge className={getStatusColor(lead.status)}>
+                              {lead.status}
+                            </Badge>
+                            {lead.replacementStatus && (
+                              <div className="text-xs text-secondary-text">
+                                Status: {lead.replacementStatus}
+                              </div>
+                            )}
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex space-x-2">
+                            {lead.status !== 'Sold' && lead.status !== 'Replacement Requested' && (
+                              <>
+                                <Button 
+                                  size="sm" 
+                                  onClick={() => handleMarkAsSold(lead.id)}
+                                  className="bg-success/20 border border-success/50 text-success hover:bg-success/30"
+                                >
+                                  <CheckCircle className="h-3 w-3 mr-1" />
+                                  Mark Sold
+                                </Button>
+                                <Button 
+                                  size="sm" 
+                                  variant="outline"
+                                  onClick={() => handleRequestReplacement(lead.id)}
+                                  className="border-danger/50 text-danger hover:bg-danger/20"
+                                >
+                                  <RotateCcw className="h-3 w-3 mr-1" />
+                                  Request Replacement
+                                </Button>
+                              </>
+                            )}
+                            {lead.status === 'Replacement Requested' && (
+                              <Badge className="bg-orange-500/20 text-orange-300">
+                                {lead.replacementStatus}
+                              </Badge>
+                            )}
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+              
+              {filteredLeads.length === 0 && (
+                <div className="text-center py-8 text-secondary-text">
+                  No leads found matching your criteria.
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="lead-categories" className="mt-6">
+          <LeadCategoriesSection />
+        </TabsContent>
+
+        <TabsContent value="aged-leads" className="mt-6">
+          <AgedLeadsFilter />
+        </TabsContent>
+      </Tabs>
 
       <MarkAsSoldModal
         isOpen={showSoldModal}
